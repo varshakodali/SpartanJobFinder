@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Spartan Job Finder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Seeking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+/*function validateLogin() {
+
+	var password = $("#password").val();
+    var email = $("#email").val();
+    var dataString = 'email=' + email + '&password=' + password;
+    var req = new XMLHttpRequest();
+    req.open("POST","login.php",true);
+    if(req!=null){
+            
+        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        req.send(dataString);
+        req.onreadystatechange = function() {
+          if( req.readyState == 4 && req.status == 200 )
+            var json = JSON.parse(req.responseText);
+            if(json.operation == "success") {
+                window.location.href = "index.php"; 
+            }
+            else if(json.operation == "error") {
+                alert("Invalid credentials!");
+            }
+            else {
+                alert("Connection to server refused! Please try again!!");
+            }
+         }
+        }
+    }
+    return false;
+}*/
+</script>
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+	    <div class="navbar-header">
+	       <a class="navbar-brand" href="index.html">Spartan Job Finder</a>
+        </div>
+	<div class="clearfix"> </div>
+	</div>
+</nav>
+<div class="banner_1">
+	<div class="container">
+   </div> 
+</div>	
+<div class="container">
+    <div class="col-md-8 single">
+	 	   <div class="login-form-section">
+                <div class="login-content">
+                    <form method="post" action="login.php">
+                        <div class="section-title">
+                            <h3>Login to your Account</h3>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="fa fa-user"></i></span>
+                                <input type="text" required="required" class="form-control" placeholder="email" name="email">
+                            </div>
+                        </div>
+                        <div class="textbox-wrap">
+                            <div class="input-group">
+                                <span class="input-group-addon "><i class="fa fa-key"></i></span>
+                                <input type="password" required="required" class="form-control " placeholder="Password" name="password">
+                            </div>
+                        </div>
+                        <div class="login-btn">
+                            <input type="submit" value="Log in">
+                        </div>
+                     </form>
+                     <span class="text-danger"><?php echo $error; ?></span>
+                     <div class="forgot">
+				 		  <div class="login-para">
+				 			<p><a href="#"> Forgot Password? </a></p>
+				 		 </div>
+					     <div class="clearfix"> </div>
+			        </div>
+					<div class="login-bottom">					
+						<h4>Don't have an Account? <a href="register.html"> Register Now!</a></h4>
+					</div>
+                </div>
+         </div>
+   </div>
+  <div class="clearfix"> </div>
+ </div>
+</div>
+<div class="footer">
+	<div class="container">
+		<div class="col-md-6 grid_3">
+			<h4>Contact Us</h4>
+				<p>Spartan Job Finder</p>
+				<p>San Jose State University<p>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="col-md-6 grid_3">
+			<h4>Sign up for free!</h4>
+			<p>Build your resume and start applying for jobs.</p>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+</body>
+</html>	

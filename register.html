@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Seeking an Job Portal Category Flat Bootstrap Responsive Website Template | Register :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Seeking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+function sendData() {
+
+        var fname = $("#firstName").val();
+        var lname = $("#lastName").val();
+        var password = $("#password").val();
+        var email = $("#email").val();
+        var phone = $("#contact").val();
+        var city = $( "#city" ).val();
+        var state = $("#state").val();
+        var dob = $( "#dob" ).val();
+        var streetAddress = $("#streetAddress").val();
+        var gender = $('input[name=gender]:checked').val();
+        var locationPreference = $("#locationPreference").val();
+
+        var dataString = 'firstName=' + fname +'&lastName=' + lname + '&password=' + password + '&email=' + email + '&contact=' + phone + '&city=' + city + '&state=' + state +'&dob=' + dob + '&streetAddress=' + streetAddress + '&gender=' + gender + '&locationPreference=' + locationPreference;
+
+        function check() {
+
+            if(fname.length == 0) {
+                    document.getElementById("firstName").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(lname.length == 0) {
+                    document.getElementById("lastName").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(password.length == 0) {
+                    document.getElementById("password").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(email.length == 0) {
+                    document.getElementById("email").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(dob.length == 0) {
+                    document.getElementById("dob").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(phone.length == 0) {
+                    document.getElementById("phone").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(city.length == 0) {
+                    document.getElementById("city").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(state.length == 0) {
+                    document.getElementById("state").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            if(streetAddress.length == 0) {
+                    document.getElementById("streetAddress").focus();
+                    alert("* Fields are required!");
+                    return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        if(check()) {
+            
+            var req = new XMLHttpRequest();
+            req.open("POST","signup.php",true);
+            
+            if(req!=null){
+            
+                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                req.send(dataString);
+                req.onreadystatechange = function() {
+                    if( req.readyState == 4 && req.status == 200) {
+                        var json = JSON.parse(req.responseText);
+                        if(json.operation == "success") {
+                            alert("Registration succesful!");
+                            window.location.href = "index.html"; 
+                        }
+                        else if(json.operation == "invalid") {
+                            alert("Email already in use!");
+                        }
+                        else {
+                            alert("Connection to server refused! Please try again!!");
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+}
+</script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+	    <div class="navbar-header">
+	       <a class="navbar-brand" href="index.html">Spartan Job Finder</a>
+        </div>
+	<div class="clearfix"> </div>
+	</div>
+</nav>	
+<div class="banner_1">
+    <div class="container">
+   </div> 
+</div>
+<div class="container">
+    <div class="single">  
+	   <div class="form-container">
+        <h2>Registration Form</h2>
+        <form>
+          <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">First Name<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="firstName" id="firstName" class="form-control input-sm"/>
+                </div>
+            </div>
+         </div>
+         <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Last Name<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="lastName" id="lastName" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+         <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Password<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="password" name="password" id="password" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Mobile Number<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="contact" id="contact" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Sex<span class="color-red">*</span></label>
+                <div class="col-md-9" class="form-control input-sm">
+                    <div class="radios">
+				        <label for="radio-01" class="label_radio">
+				            <input type="radio" name="gender"> Male
+				        </label>
+				        <label for="radio-02" class="label_radio">
+				            <input type="radio" name="gender"> Female
+				        </label>
+	                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Date of birth<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="dob" id="dob" class="form-control input-sm" placeholder="mm/dd/yyyy" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Email<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="email" name="email" id="email" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Street Address<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="streetAddress" id="streetAddress" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">City<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="city" id="city" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">State<span class="color-red">*</span></label>
+                <div class="col-md-9">
+                    <input type="text" name="state" id="state" class="form-control input-sm"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label class="col-md-3 control-lable">Location Preference</label>
+                <div class="col-md-9">
+                   <input type="text" id="locationPreference" class="form-control input-sm"/> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-actions floatRight">
+                <input type="button" value="Register" class="btn btn-primary btn-sm" onclick="sendData()">
+            </div>
+        </div>
+    </form>
+    <div class="login-bottom">                  
+        <h4>Already have an Account? <a href="index.html"> Login Now!</a></h4>
+    </div>
+    </div>
+ </div>
+</div>
+<div class="footer">
+	<div class="container">
+		<div class="col-md-6 grid_3">
+			<h4>Contact Us</h4>
+				<p>Spartan Job Finder</p>
+				<p>San Jose State University<p>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="col-md-6 grid_3">
+			<h4>Sign up for free!</h4>
+			<p>Build your resume and start applying for jobs.</p>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+</body>
+</html>	
