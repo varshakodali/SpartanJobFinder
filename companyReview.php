@@ -26,10 +26,11 @@
 
                 }
 
-                //$error = "";
-                //$dataString = "";
+                $error = "";
+                $dataString = "";
                 $location = filter_input(INPUT_POST, "location");
                 $company  = filter_input(INPUT_POST, "company");
+                
                 $con = new PDO("mysql:host=localhost;dbname=varsha","root", "sesame");
                 $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
@@ -37,34 +38,37 @@
                             JOIN organization ON organization.OrgID = companyreview.OrgID";
                 
                 $vars = array();
-                print $location;
                             
-                /*if(strlen($company) > 0 || strlen($location) > 0) {
+                if(strlen($company) > 0 || strlen($location) > 0) {
 
-                    $query .= "WHERE ";
+                    $query .= " WHERE ";
                     if(strlen($company) > 0 && strlen($location) > 0){
                         $vars[':company'] = $company;
                         $vars[':location'] = $location;
-                        $query .= " organization.Name = :company AND (organization.State = :location OR organization.HeadQuaters = :location)";
+                        $query .= "organization.Name = :company AND (organization.State = :location OR organization.HeadQuaters = :location)";
                     }
                     else if(strlen($company) > 0) {
                         $vars[':company'] = $company;
-                        $query .= " organization.Name = :company ";
+                        $query .= "organization.Name = :company";
                     }
                     else if(strlen($location) > 0){
                         $vars[':location'] = $location;
-                        $query .= " organization.State = :location OR organization.HeadQuaters = :location";
+                        $query .= "organization.State = :location OR organization.HeadQuaters = :location";
                     }
-                }*/ 
-                $query .= "GROUP BY ReviewerID, organization.OrgID ORDER BY Rating DESC";
+                }
 
+                $query .= " GROUP BY ReviewerID, organization.OrgID ORDER BY Rating DESC";
+                
                 $ps = $con->prepare($query);
                 $ps->execute($vars);
                 $ps->setFetchMode(PDO::FETCH_CLASS, "Review");
-                //print sizeof($ps->fetch());
+
+                if(!($ps->fetch())){
+                    print "<h3>No reviews for your criteria!</h3>";
+                }
                               
-                /*while ($review = $ps->fetch()) {
-                        
+                while ($review = $ps->fetch()) {
+ 
                     print "<div class='media'>";
                     print "<div class='media-left'><a href='#'> </a></div>";
                     print "<div class='media-body'><h4 class='media-heading'><a class='author' href='#'>";
@@ -79,7 +83,7 @@
                     print "/5</p>";
                     print "</div><div class='clearfix'> </div></div>";
 
-                }*/
+                }
                                 
 /*<div class="media">
  <div class="media-left"><a href="#"> </a></div>

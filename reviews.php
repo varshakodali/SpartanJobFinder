@@ -19,7 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="index.html">Spartan Job Finder</a>
+           <a class="navbar-brand" href="home.php">Spartan Job Finder</a>
         </div>
         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
         <ul class="nav navbar-nav">
@@ -69,6 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         ?>         
     </div>
     <form action="submitReview.php", method="post">
+    <h6>Write Review</h6>
             <div class="to">
                 <input type="text" class="text" placeholder="Company" name="company">
                 <input type="text" class="text" placeholder="location" name="location" style="margin-left:3%">

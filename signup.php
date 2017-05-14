@@ -13,6 +13,7 @@
         $state = filter_input(INPUT_POST, "state");
         $locationPreference = filter_input(INPUT_POST, "locationPreference");
         $contact = filter_input(INPUT_POST, "contact");
+        $Experience = filter_input(INPUT_POST, "Experience");
             
         try {
                 
@@ -23,7 +24,7 @@
 
                 // Insert new record into the db
                 if(strlen($email) > 0 && strlen($last) > 0) {
-                    $query = $con->prepare("INSERT INTO applicant(FirstName, LastName, Email, Password, StreetAddress, City, State, DOB, Gender, LocationPreference, Contact) VALUES('$first', '$last','$email','$password', '$streetAddress','$city','$state','$dob','$gender', '$locationPreference', '$contact');");
+                    $query = $con->prepare("INSERT INTO applicant(FirstName, LastName, Email, Password, StreetAddress, City, State, DOB, LocationPreference, Contact, Experience) VALUES('$first', '$last','$email','$password', '$streetAddress','$city','$state','$dob','$locationPreference', '$contact', '$Experience');");
                     if($query->execute()) {
                         $jsonobj->operation = "success";
                         echo json_encode($jsonobj);
