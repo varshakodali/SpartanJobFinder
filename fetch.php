@@ -13,10 +13,10 @@ $ps = $con->prepare($query);
 $ps->execute($GLOBALS['vars']);
 $ps->setFetchMode(PDO::FETCH_CLASS, "job_info");
 print '<form action="apply.php" method="post">';
-print '<table width ="800px">';
+print '<table width ="800px" valign="top">';
 while ($job_info = $ps->fetch()) {
   // echo $job_info->Role;
-  print '<tr valign="top">';
+  print "<tr valign='top'>";
   print '<td width="50px">';
   print '</td>';
   print '<td valign="top">';

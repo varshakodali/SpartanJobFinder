@@ -114,9 +114,10 @@ function getJobInfo(jobSearch $myJob, $con){
 		include 'job_result.php';
 	print "</td>";
 	print "<td>";
-	print "<div id='right'>";
+
 	// require('example.php');
 	print '<table width ="800px">';
+	print "<div id='right' style='float: left;'>";
 	print '</table>';
 	print "</div>";
 	print "</td>";
