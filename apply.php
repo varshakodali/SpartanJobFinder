@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include 'header.html';
 include 'connect.php';
 session_start();
 $jobid = $_POST['jobid'];
