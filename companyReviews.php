@@ -19,7 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-           <a class="navbar-brand" href="home.php">Spartan Job Finder</a>
+           <h1><a class="navbar-brand" href="#" style="text-decoration: none;">Spartan Job Finder</a></h1>
         </div>
         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
         <ul class="nav navbar-nav">
@@ -35,7 +35,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
-                        <li><a href="location.html">View Profile</a></li>
+                        <li><a href="profile.php">View Profile</a></li>
+                        <li><a href="download.php">View Resume</a></li>
                         <li><a href="logout.php">Log out</a></li>
                  </ul>
                 </li>
@@ -61,7 +62,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <h6>Write Review</h6>
             <div class="to">
                 <input type="text" class="text" placeholder="Company" name="company">
-                <input type="text" class="text" placeholder="location" name="location" style="margin-left:3%">
+                <input type="text" class="text" placeholder="Name" name="reviewer" style="margin-left:3%">
                 <input type="text" class="text" placeholder="Rating" name="rating">
             </div>
             <div class="text">

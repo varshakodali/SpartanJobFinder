@@ -11,34 +11,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
-/*function validateLogin() {
-
-	var password = $("#password").val();
-    var email = $("#email").val();
-    var dataString = 'email=' + email + '&password=' + password;
-    var req = new XMLHttpRequest();
-    req.open("POST","login.php",true);
-    if(req!=null){
-            
-        req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        req.send(dataString);
-        req.onreadystatechange = function() {
-          if( req.readyState == 4 && req.status == 200 )
-            var json = JSON.parse(req.responseText);
-            if(json.operation == "success") {
-                window.location.href = "index.php"; 
-            }
-            else if(json.operation == "error") {
-                alert("Invalid credentials!");
-            }
-            else {
-                alert("Connection to server refused! Please try again!!");
-            }
-         }
-        }
-    }
-    return false;
-}*/
 </script>
 <link href="css/font-awesome.css" rel="stylesheet"> 
 <link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -47,7 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container">
 	    <div class="navbar-header">
-	       <a class="navbar-brand" href="index.html">Spartan Job Finder</a>
+	       <h1><a class="navbar-brand" href="index.html" style="text-decoration: none;">Spartan Job Finder</a></h1>
         </div>
 	<div class="clearfix"> </div>
 	</div>
@@ -82,9 +54,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                      </form>
                      <span class="text-danger"><?php echo $error; ?></span>
                      <div class="forgot">
-				 		  <div class="login-para">
-				 			<p><a href="#"> Forgot Password? </a></p>
-				 		 </div>
 					     <div class="clearfix"> </div>
 			        </div>
 					<div class="login-bottom">					

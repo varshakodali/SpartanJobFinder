@@ -27,6 +27,7 @@ class Job {
     private $Type;
     private $Month;
     private $YearApplied;
+    private $Organization;
     
     public function getRole()  { 
         return $this->Role; 
@@ -40,12 +41,14 @@ class Job {
     public function getYear()  { 
         return $this->YearApplied; 
     }
+    public function getOrganization() {
+        return $this->Organization;
+    }
 
 }
        
         try {
                 // Connect to db
-                $jsonobj = new stdClass();
                 $dataString = "";
                 $error = "";
                 //$username = $_SESSION['login_user'];
@@ -77,17 +80,19 @@ class Job {
 
                     }
 
-                    $ps1 = $con->prepare("SELECT Type, Role, MONTHNAME(DatePosted) AS Month, YEAR(DatePosted) AS YearApplied FROM jobapplications
-                            JOIN jobs ON jobs.JobID = jobapplications.JobID 
-                            WHERE ApplicantID = :userID");
+                    $ps1 = $con->prepare("SELECT Type, Role, MONTHNAME(DateApplied) AS Month, YEAR(DateApplied) AS YearApplied, company_name AS Organization FROM job_applicants
+                        JOIN jobs ON jobs.JobID = job_applicants.job_id 
+                        JOIN companies ON companies.company_ID = jobs.companyId
+                        WHERE applicant_id = :userID");
                     
                     $vars1 = array(':userID' => $userID);
                     $ps1->execute($vars1);
                     $ps1->setFetchMode(PDO::FETCH_CLASS, "Job"); 
 
+                    if($ps1->fetch()) $dataString .= "<h5>Jobs Applied</h5>"; 
+
                     while ($review1 = $ps1->fetch()) {
                         
-                        $dataString .= "<h5>Jobs Applied</h5>"; 
                         $dataString .= "<div class='tab_grid'>";
                         $dataString .= "<div class='jobs-item with-thumb'>";
                         $dataString .= "<div class='jobs_right'>";
@@ -100,7 +105,7 @@ class Job {
                          $dataString .= $review1->getRole();
                          $dataString .= "</a></h6>";
                          $dataString .= "<span class='meta'>";
-                         $dataString .= "Earny";
+                         $dataString .= $review1->getOrganization();
                          $dataString .= "</span></div>";
                          $dataString .= "<div class='clearfix'></div>";
                          $dataString .= "<p class='description'>";
@@ -109,13 +114,12 @@ class Job {
                          $dataString .= "</div><div class='clearfix'> </div></div>";
 
                     }
-                    if(sizeof($ps1->fetch()) == 0) {
+                    /*if(!($ps1->fetch())) {
                         $dataString .= "<h3>No Jobs Applied!</h3>";
-                    }
+                    }*/
             
             } catch(PDOException $ex) {
-                $jsonobj->operation = "error";
-                $error = "Server refused connection! Try again";
+                print "<h3>Server refused connection! Try again</h3>";
             
             }        
 ?>

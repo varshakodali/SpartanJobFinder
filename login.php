@@ -6,7 +6,6 @@
        
         try {
                 // Connect to db
-                $jsonobj = new stdClass();
                 $error = "";
                 $con = new PDO("mysql:host=localhost;dbname=test","root", "sesame");
                 $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -28,15 +27,17 @@
                         echo "<script type='text/javascript'> document.location = 'index.html'; </script>";
                     }
                     else{
-                        $jsonobj->operation = "success";
+                        //$jsonobj->operation = "success";
                         $_SESSION['login_user']=$email;
-                        header("location: home.php");
-                        exit();
-                        //echo json_encode($jsonobj);                     
+                        header("location: home.html");
+                        exit();                 
                     }
             
             } catch(PDOException $ex) {
-                $jsonobj->operation = "error";
+                echo '<script type="text/javascript">';
+                echo 'alert("Server refused connection! Try again");';
+                echo '</script>';
+                echo "<script type='text/javascript'> document.location = 'index.html'; </script>";
                 $error = "Server refused connection! Try again";
             
             }        

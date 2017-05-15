@@ -3,7 +3,7 @@
            
         try {
                 // Connect to db
-                $jsonobj = new stdClass();
+                //$jsonobj = new stdClass();
                 class Review {
 
                     private $Name;
@@ -31,11 +31,11 @@
                 $location = filter_input(INPUT_POST, "location");
                 $company  = filter_input(INPUT_POST, "company");
                 
-                $con = new PDO("mysql:host=localhost;dbname=varsha","root", "sesame");
+                $con = new PDO("mysql:host=localhost;dbname=test","root", "sesame");
                 $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-                $query = "SELECT Name, Reviewer, Review, Rating, State, HeadQuaters FROM companyreview 
-                            JOIN organization ON organization.OrgID = companyreview.OrgID";
+                $query = "SELECT company_name AS Name, Reviewer, Review, Rating, location FROM companyreview 
+                            JOIN companies ON companies.company_ID = companyreview.OrgID";
                 
                 $vars = array();
                             
@@ -45,30 +45,26 @@
                     if(strlen($company) > 0 && strlen($location) > 0){
                         $vars[':company'] = $company;
                         $vars[':location'] = $location;
-                        $query .= "organization.Name = :company AND (organization.State = :location OR organization.HeadQuaters = :location)";
+                        $query .= "companies.company_name = :company AND companies.location = :location";
                     }
                     else if(strlen($company) > 0) {
                         $vars[':company'] = $company;
-                        $query .= "organization.Name = :company";
+                        $query .= "companies.company_name = :company";
                     }
                     else if(strlen($location) > 0){
                         $vars[':location'] = $location;
-                        $query .= "organization.State = :location OR organization.HeadQuaters = :location";
+                        $query .= "companies.location = :location";
                     }
                 }
 
-                $query .= " GROUP BY ReviewerID, organization.OrgID ORDER BY Rating DESC";
-                
+                $query .= " GROUP BY ReviewerID, companies.company_ID ORDER BY Rating DESC";
+
                 $ps = $con->prepare($query);
                 $ps->execute($vars);
                 $ps->setFetchMode(PDO::FETCH_CLASS, "Review");
-
-                if(!($ps->fetch())){
-                    print "<h3>No reviews for your criteria!</h3>";
-                }
-                              
+        
                 while ($review = $ps->fetch()) {
- 
+
                     print "<div class='media'>";
                     print "<div class='media-left'><a href='#'> </a></div>";
                     print "<div class='media-body'><h4 class='media-heading'><a class='author' href='#'>";
@@ -84,25 +80,11 @@
                     print "</div><div class='clearfix'> </div></div>";
 
                 }
-                                
-/*<div class="media">
- <div class="media-left"><a href="#"> </a></div>
-<div class="media-body"> <h4 class="media-heading"><a class="author" href="#">Company</a></h4>
-<h6>varsha: </h6>
-Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-<p>Rating: 4.0/5.0</p>
-</div>
-<div class="clearfix"> </div>
-</div>
-REVIEWS;*/
 
-                            //}
-                        //}                 
-                   // }
-            
             } catch(PDOException $ex) {
                 //$jsonobj->operation = "error";
-                //$error = "Server refused connection! Try again";
+                //print $ex;
+                print "<h1>Server refused connection! Try again</h1>";
             
             }        
         ?>

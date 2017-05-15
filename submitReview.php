@@ -1,23 +1,24 @@
 <?php
+    include('session.php');
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Methods: *');
 
-        $reviewer = filter_input(INPUT_POST, "reviewer");
         $company  = filter_input(INPUT_POST, "company");
+        $reviewer = filter_input(INPUT_POST, "reviewer");
         $rating = filter_input(INPUT_POST, "rating");
         $review  = filter_input(INPUT_POST, "review");
             
         try {
                 
                 // Connect to db
-                $jsonobj = new stdClass();
-                $con = new PDO("mysql:host=localhost;dbname=varsha","root", "sesame");
+                //$jsonobj = new stdClass();
+                $con = new PDO("mysql:host=localhost;dbname=test","root", "sesame");
                 $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
                 // Insert new record into the db
                 if(strlen($reviewer) > 0 && strlen($company) > 0 && strlen($review) > 0) {
                     
-                    $query = $con->prepare("SELECT OrgID FROM organization WHERE Name = :name");
+                    $query = $con->prepare("SELECT company_ID FROM companies WHERE company_name = :name");
                     $vars = array(':name' => $company);
                     $query->execute($vars);
                     $data = $query->fetchAll(PDO::FETCH_ASSOC); 
@@ -29,7 +30,7 @@
                                 $OrgID =  $value;
                             }                           
                         }
-                        $query = $con->prepare("INSERT INTO companyreview(Reviewer, Review, Rating, OrgID) VALUES('$reviewer', '$review','$rating','$OrgID');");
+                        $query = $con->prepare("INSERT INTO companyreview(Reviewer, ReviewerID, Review, Rating, OrgID) VALUES('$reviewer', '$id', '$review','$rating','$OrgID');");
                         if($query->execute()) {
                             header("location: reviews.php");
                             exit();
@@ -54,6 +55,10 @@
             } catch(PDOException $ex) {
                 //$jsonobj->operation = "error";
                 //echo json_encode($jsonobj) ;
+                 echo '<script type="text/javascript">';
+                 echo 'alert("You can submit review for a company only once!!");';
+                 echo '</script>';
+                 echo "<script type='text/javascript'> document.location = 'reviews.php'; </script>";
             
             }        
         ?>
