@@ -66,6 +66,7 @@ function getJobInfo(jobSearch $myJob, $con){
 
 	}
 	else{
+		if($myJob->keyword !='Company/Job Title'){
 		$query = "SELECT * FROM jobs j join companies c
 		on j.companyId = c.company_ID
 		WHERE j.Role
@@ -74,6 +75,13 @@ function getJobInfo(jobSearch $myJob, $con){
 		LIKE CONCAT('%', '$myJob->keyword', '%')
 		AND c.location = '$myJob->location'
 		";
+		}
+		else{
+			$query = "SELECT * FROM jobs j join companies c
+			on j.companyId = c.company_ID
+			WHERE c.location = '$myJob->location'
+			";
+		}
 	}
 
 	$ps = $con->prepare($query);
