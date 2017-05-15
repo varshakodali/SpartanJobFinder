@@ -12,7 +12,7 @@ $location = filter_input(INPUT_POST, "location");
 // echo "Post is: ";
 // print_r($_SESSION);
 
-if((isset($_POST["type"])) || (isset($_POST["skill"])) || (isset($_POST["experience"])) || (isset($_POST["role"])))
+if((isset($_POST["type"])) || (isset($_POST["experience"])) || (isset($_POST["role"])))
 {
 	// echo "SETTING";
 	$_SESSION["filter"] = "YES";
@@ -52,11 +52,6 @@ function getJobInfo(jobSearch $myJob, $con){
 		if(isset($_POST["type"])){
 			$var = $_POST['type'];
 			$query .= "and j.Type LIKE CONCAT('%','$var','%')";
-		}
-
-		if(isset($_POST["skill"])){
-			$var = $_POST['skill'];
-			$query .= "and j.Skills LIKE CONCAT('%','$var','%')";
 		}
 
 		if(isset($_POST["experience"])){

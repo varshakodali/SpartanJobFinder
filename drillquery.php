@@ -17,7 +17,7 @@
   }],
   "titles": [
     {
-      "text": "Jobs Applied",
+      "text": "Jobs Applied By You",
       "size": 20
     }
   ],
@@ -29,19 +29,20 @@
 </head>
 <body>
 <?php
-session_start();
+
 function getdata()
 {
+  session_start();
   require 'jobSearch.php';
   require 'connect.php';
   $con = connect_to_db();
-
+  $email = $_SESSION['login_user'];
   $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, concat(c.year,'-',c.month) as monyear from JobsApplied ja
             join calendar c
             on ja.CalendarKey = c.CalendarKey
             join applicant a
             on ja.ApplicantKey = a.ID
-            where ja.ApplicantKey=4
+            where ja.ApplicantKey= (SELECT ID from applicant where Email='$email')
             group by c.year, c.Month
             order by jobs desc
             ";
@@ -53,7 +54,7 @@ function getdata()
                 on ja.CalendarKey = c.CalendarKey
                 join applicant a
                 on ja.ApplicantKey = a.ID
-                where ja.ApplicantKey=4
+                where ja.ApplicantKey=(SELECT ID from applicant where Email='$email')
                 group by c.year
                 order by jobs desc
                 ";
@@ -64,7 +65,7 @@ function getdata()
                 on ja.CalendarKey = c.CalendarKey
                 join applicant a
                 on ja.ApplicantKey = a.ID
-                where ja.ApplicantKey=4
+                where ja.ApplicantKey=(SELECT ID from applicant where Email='$email')
                 group by c.year, c.Month, c.DayOfMonth
                 order by jobs desc
                 ";
