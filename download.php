@@ -29,6 +29,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
+				<li>
+                    <a href="salary.html">Salaries</b></a>
+                </li>
+						<li>
+								<a href="job_chart.php">Dashboard</b></a>
+						</li>
                 <li>
                     <a href="resume.html">Upload Resume</b></a>
                 </li>

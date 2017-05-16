@@ -27,11 +27,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="jobs.html">Jobs</b></a>
                 </li>
                 <li>
-                    <a href="companies.html">Companies</b></a>
+                    <a href="companies.php">Companies</b></a>
                 </li>
                 <li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
+				<li>
+                    <a href="salary.html">Salaries</b></a>
+                </li>
+						<li>
+								<a href="job_chart.php">Dashboard</b></a>
+						</li>
                 <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
@@ -45,11 +51,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="clearfix"> </div>
     </div>
 </nav>
-<div class="banner_1">
+<div class="None">
     <div class="container">
     <div id="search_wrapper1">
         <div id="search_form" class="clearfix">
-            <h1>Start your job search</h1>
+            <h3>Search based on company</h3>
             <p>
             <form action="companyReviews.php" method="post">
              <input type="text" class="text" placeholder="Enter Company" name="company">

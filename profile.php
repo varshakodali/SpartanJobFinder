@@ -20,21 +20,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
         <ul class="nav navbar-nav">
                 <li>
-                    <a href="#">Jobs</b></a>
+                    <a href="jobs.html">Jobs</b></a>
                 </li>
                 <li>
-                    <a href="#">Companies</b></a>
+                    <a href="companies.php">Companies</b></a>
                 </li>
-                <li>
+				<li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
-                <li>
-                    <a href="resume.html">Upload Resume</a>
+				<li>
+                    <a href="salary.html">Salaries</b></a>
                 </li>
+                <li>
+								<a href="job_chart.php">Dashboard</b></a>
+						</li>
+                
+                <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
                         <li><a href="profile.php">View Profile</a></li>
-                        <li><a href="download.php">View Resume</a></li>
+						<li><a href="download.php">View Resume</a></li>
                         <li><a href="logout.php">Log out</a></li>
                 </ul>
                 </li>

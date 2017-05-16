@@ -36,13 +36,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
+				<li>
+                    <a href="salary.html">Salaries</b></a>
+                </li>
                 <li>
                     <a href="worth.php">Know your Worth</b></a>
                 </li>
                 <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
-                        <li><a href="location.html">View Profile</a></li>
+                        <li><a href="profile.php">View Profile</a></li>
+						<li><a href="download.php">View Resume</a></li>
                         <li><a href="logout.php">Log out</a></li>
                 </ul>
                 </li>
@@ -56,25 +60,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="form-group">
     <label class="control-label col-sm-2" for="role">Role</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="role" name="role" placeholder="Enter role">
+      <input type="text" class="form-control" id="role" name="role" placeholder="Enter role"required/>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="salary">Current Annual Salary</label>
     <div class="col-md-6"> 
-      <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter salary">
+      <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter salary"required/>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="experience">Years of experience</label>
     <div class="col-md-6"> 
-      <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience">
+      <input type="text" class="form-control" id="experience" name="experience" placeholder="Enter experience"required/>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-2" for="location">Location</label>
     <div class="col-md-6"> 
-      <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
+      <input type="text" class="form-control" id="location" name="location" placeholder="Enter location"required/>
     </div>
   </div>
   <div class="form-group"> 

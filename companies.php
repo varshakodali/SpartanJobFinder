@@ -109,13 +109,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
+				<li>
+                    <a href="salary.html">Salaries</b></a>
+                </li>
                 <li>
                     <a href="worth.php">Know your Worth</b></a>
                 </li>
                 <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
-                        <li><a href="location.html">View Profile</a></li>
+                        <li><a href="profile.php">View Profile</a></li>
+						<li><a href="download.php">View Resume</a></li>
                         <li><a href="logout.php">Log out</a></li>
                 </ul>
                 </li>
@@ -124,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="clearfix"> </div>
     </div>
 </nav>
-<div class="banner_1">
+<div class="None">
     <div class="container">
     <div id="search_wrapper1">
         <div id="search_form" class="clearfix">
