@@ -3,7 +3,7 @@
     $location_name  = filter_input(INPUT_POST, "location");
     $type = filter_input(INPUT_POST, "type");
     $size = filter_input(INPUT_POST, "size");
-
+    $result = 0;
     try {
                 // Connect to db
                 $jsonobj = new stdClass();
