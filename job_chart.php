@@ -34,11 +34,11 @@ function getdata()
 {
   require 'jobSearch.php';
   require 'connect.php';
-  $con = connect_to_db();
+  $con = connect_to_db_analytics();
 
   $query = "SELECT sum(NumofJobsApplied) as jobs, companies.company_name
   FROM JobsApplied
-  JOIN companies on JobsApplied.OrganizationKey = companies.company_ID
+  JOIN companies on JobsApplied.OrganizationKey = companies.company_key
   group by company_name order by jobs DESC limit 5";
 
   $ps = $con->prepare($query);

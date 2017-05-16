@@ -35,14 +35,14 @@ function getdata()
   session_start();
   require 'jobSearch.php';
   require 'connect.php';
-  $con = connect_to_db();
+  $con = connect_to_db_analytics();
   $email = $_SESSION['login_user'];
   $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, concat(c.year,'-',c.month) as monyear from JobsApplied ja
             join calendar c
             on ja.CalendarKey = c.CalendarKey
             join applicant a
-            on ja.ApplicantKey = a.ID
-            where ja.ApplicantKey= (SELECT ID from applicant where Email='$email')
+            on ja.ApplicantKey = a.ApplicantKey
+            where ja.ApplicantKey= (SELECT ApplicantKey from applicant where Email='$email')
             group by c.year, c.Month
             order by jobs desc
             ";
@@ -53,8 +53,8 @@ function getdata()
                 join calendar c
                 on ja.CalendarKey = c.CalendarKey
                 join applicant a
-                on ja.ApplicantKey = a.ID
-                where ja.ApplicantKey=(SELECT ID from applicant where Email='$email')
+                on ja.ApplicantKey = a.ApplicantKey
+                where ja.ApplicantKey=(SELECT ApplicantKey from applicant where Email='$email')
                 group by c.year
                 order by jobs desc
                 ";
@@ -64,8 +64,8 @@ function getdata()
                 join calendar c
                 on ja.CalendarKey = c.CalendarKey
                 join applicant a
-                on ja.ApplicantKey = a.ID
-                where ja.ApplicantKey=(SELECT ID from applicant where Email='$email')
+                on ja.ApplicantKey = a.ApplicantKey
+                where ja.ApplicantKey=(SELECT ApplicantKey from applicant where Email='$email')
                 group by c.year, c.Month, c.DayOfMonth
                 order by jobs desc
                 ";
