@@ -35,9 +35,7 @@
    <button value="up">Yearly</button>
    <button value="down">Daily</button>
   </p>
-  <div id="chartdiv" style="width: 840px; height: 400px;margin-left: 300px;">
-
-  </div>
+  <div id="chartdiv" style="width: 840px; height: 400px;margin-left: 300px;"> </div>
   <?php
   // include 'footer.html';
    ?>

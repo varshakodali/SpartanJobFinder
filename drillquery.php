@@ -37,7 +37,7 @@ function getdata()
   require 'connect.php';
   $con = connect_to_db_analytics();
   $email = $_SESSION['login_user'];
-  $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, concat(c.year,'-',c.month) as monyear from JobsApplied ja
+  $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, concat(c.year,'-',c.month) as monyear from jobsapplied ja
             join calendar c
             on ja.CalendarKey = c.CalendarKey
             join applicant a
@@ -49,7 +49,7 @@ function getdata()
 
   if(isset($_POST['jobid'])){
     if($_POST['jobid']=='up'){
-      $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, c.year as monyear from JobsApplied ja
+      $query = "SELECT sum(ja.`NumofJobsApplied`) as jobs, c.year as monyear from jobsapplied ja
                 join calendar c
                 on ja.CalendarKey = c.CalendarKey
                 join applicant a

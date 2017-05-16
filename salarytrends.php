@@ -40,19 +40,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <a href="jobs.html">Jobs</b></a>
                 </li>
                 <li>
-                    <a href="companies.html">Companies</b></a>
+                    <a href="companies.php">Companies</b></a>
+                </li>
+				<li>
+                    <a href="reviews.php">Reviews</b></a>
                 </li>
 				<li>
                     <a href="salary.html">Salaries</b></a>
                 </li>
                 
-                <li>
-                    <a href="reviews.php">Reviews</b></a>
-                </li>
+                
+				<li>
+								<a href="job_chart.php">Dashboard</b></a>
+						</li>
                 <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
                         <li><a href="location.html">View Profile</a></li>
+						<li><a href="download.php">View Resume</a></li>
                         <li><a href="logout.php">Log out</a></li>
                 </ul>
                 </li>
@@ -83,10 +88,10 @@ class salaraydetail{
 	}
 }
 
-	$con = new PDO("mysql:host=localhost;dbname=test","root", "sesame");
+	$con = new PDO("mysql:host=localhost;dbname=analytics_spartans","root", "sesame");
 	$con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 	
-	$query = "SELECT company_name,AverageSalary from companies join salaryfacttable on salaryfacttable.company_ID=companies.company_ID";
+	$query = "SELECT company_name,AverageSalary from companies join salaryfacttable on salaryfacttable.CompanyKey=companies.Company_Key";
 	$ps = $con->prepare($query);
 	$ps->execute();
 	$ps->setFetchMode(PDO::FETCH_CLASS, "salaraydetail");
@@ -130,10 +135,7 @@ class salaraydetail{
                     "domain": plot[4].name,
                     "visits": plot[4].salaray,
                 },
-				{
-                    "domain": plot[5].name,
-                    "visits": plot[5].salaray,
-                },
+				
 			
         ],
         "valueAxes": [{
