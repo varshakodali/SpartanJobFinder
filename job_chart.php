@@ -18,15 +18,40 @@
       "valueField": "jobs"
       }],
       "titles": [
-    		{
-    			"text": "Companies with Most Jobs Applied",
-    			"size": 20
-    		}
-    	],
+        {
+          "text": "Companies with Most Jobs Applied",
+          "size": 20
+        }
+      ],
       "depth3D": 50,
       "angle": 90,
         // } ]
       } );
+
+      AmCharts.makeChart( "chartdiv2", {
+      "type": "serial",
+      "dataProvider": <?php getRating(); ?>,
+      "categoryField": "name",
+      "graphs": [{
+    // "balloonText": "[[category]]: <b>[[value]]</b>",
+      "colorField": "color",
+      "fillAlphas": 0.85,
+      "lineAlpha": 0.5,
+      "type": "column",
+      "topRadius": 0.8,
+      "valueField": "Rating"
+      }],
+      "titles": [
+        {
+          "text": "Best Rated Companies",
+          "size": 20
+        }
+      ],
+      "depth3D": 50,
+      "angle": 90,
+        // } ]
+      } );
+
     </script>
   </head>
 <?php
@@ -62,14 +87,44 @@ function getdata()
   // $job_info = $ps->fetchall();
   // echo json_encode($job_info);
 }
+function getRating() {
+  $con = connect_to_db();
+
+  $query = "SELECT AVG(Rating) as Rating, companies.company_name
+  FROM CompanyRating
+  JOIN companies on CompanyRating.OrganizationKey = companies.company_ID
+  group by company_name order by Rating DESC limit 5";
+
+  $ps = $con->prepare($query);
+  $ps->execute();
+
+  $org = new StdClass;
+  $org_arr = new StdClass;
+  echo "[";
+  $i=0;
+  $colors = array("#FF0000", "#3361FF", "#5CBC65", "#CE0EA0", "#F5E331");
+  while($job_info = $ps->fetch()){
+    $org->name = $job_info['company_name'];
+    $org->Rating = $job_info['Rating'];
+    $org->color = $colors[$i];
+    echo json_encode($org);
+    echo ",";
+    $i = $i+1;
+  }
+  echo "]";
+
+}
 ?>
 <body>
   <?php
   include 'header.html';
    ?>
-  <div id="chartdiv1" style="width: 640px; height: 400px;margin-left: 300px;"></div>
+  <div id="chartdiv1" style="width: 640px; height: 400px;margin-left: 300px;"></div> 
+  <div id="chartdiv2" style="width: 640px; height: 400px;margin-left: 300px;"></div>
   <?php
   include 'drill.php';
+  ?>
+  <?php
   include 'footer.html';
    ?>
 </body>

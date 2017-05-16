@@ -19,19 +19,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
            <h1><a href="#" style="text-decoration: none;"> Spartan Job Finder</a> </h1>
         </div>
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" style="height: 1px;">
-        <ul class="nav navbar-nav">
+       <ul class="nav navbar-nav">
                 <li>
                     <a href="jobs.html">Jobs</b></a>
                 </li>
                 <li>
-                    <a href="companies.html">Companies</b></a>
+                    <a href="companies.php">Companies</b></a>
                 </li>
                 <li>
                     <a href="reviews.php">Reviews</b></a>
                 </li>
                 <li>
-                    <a href="resume.html">Upload Resume</b></a>
+                    <a href="salary.html">Salaries</b></a>
                 </li>
+                <li>
+                    <a href="job_chart.php">Dashboard</b></a>
+                </li>
+                
+                <li><a href="resume.html">Upload Resume</a></li>
                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account<b class="caret"></b></a>
                  <ul class="dropdown-menu">
                         <li><a href="profile.php">View Profile</a></li>
