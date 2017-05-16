@@ -39,15 +39,22 @@ getJobInfo($myJobQuery, $con);
 
 
 function getJobInfo(jobSearch $myJob, $con){
+	#Filter Present
 	if($_SESSION["filter"]=="YES"){
 		$keyword = $_SESSION['keyword'];
 		$location = $_SESSION['location'];
-		$query = "SELECT * FROM jobs j join companies c
-		on j.companyId = c.company_ID where j.Role
-		LIKE CONCAT('%', '$keyword', '%')
-		or c.company_name
-		LIKE CONCAT('%', '$keyword', '%')
-		AND c.location = '$location' ";
+		if($keyword !='Company/Job Title'){
+			$query = "SELECT * FROM jobs j join companies c
+			on j.companyId = c.company_ID where j.Role
+			LIKE CONCAT('%', '$keyword', '%')
+			or c.company_name
+			LIKE CONCAT('%', '$keyword', '%')
+			AND c.location = '$location' ";
+		}
+		else{
+			$query = "SELECT * FROM jobs j join companies c
+			on j.companyId = c.company_ID where c.location = '$location' ";
+		}
 
 		if(isset($_POST["type"])){
 			$var = $_POST['type'];
@@ -65,6 +72,7 @@ function getJobInfo(jobSearch $myJob, $con){
 		}
 
 	}
+	#FIlter Not Present
 	else{
 		if($myJob->keyword !='Company/Job Title'){
 		$query = "SELECT * FROM jobs j join companies c
@@ -83,7 +91,7 @@ function getJobInfo(jobSearch $myJob, $con){
 			";
 		}
 	}
-
+	// echo $query;
 	$ps = $con->prepare($query);
 	$ps->execute($GLOBALS['vars']);
 	$ps->setFetchMode(PDO::FETCH_CLASS, "job_info");
