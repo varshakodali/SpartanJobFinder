@@ -18,7 +18,7 @@
        $con = new PDO("mysql:host=localhost;dbname=test","root", "sesame");
        $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-       $query = "SELECT id AS Id, name AS Name FROM resumes WHERE userId = $id";
+       $query = "SELECT userId AS Id, name AS Name FROM resumes WHERE userId = $id";
        $result = $con->query($query);
        $result->setFetchMode(PDO::FETCH_CLASS, "Resume"); //or die('Error, query failed');
 

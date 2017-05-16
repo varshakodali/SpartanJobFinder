@@ -16,10 +16,6 @@
                 $content = addslashes($content);
                 fclose($fp);
 
-                //if(!get_magic_quotes_gpc())
-                //{
-                  //  $fileName = addslashes($fileName);
-                //}
                 
                 $uid = intval($id);
 

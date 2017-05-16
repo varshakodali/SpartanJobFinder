@@ -26,7 +26,7 @@
                 $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     $id    = $_GET['id'];
 
-$query = "SELECT name AS Name, type AS Type, size AS Size, content AS Content FROM resumes WHERE id = $id ";
+$query = "SELECT name AS Name, type AS Type, size AS Size, content AS Content FROM resumes WHERE userId = $id ";
 
 $result = $con->query($query);// or die('Error, query failed');
 $result->setFetchMode(PDO::FETCH_CLASS, "FileF");
